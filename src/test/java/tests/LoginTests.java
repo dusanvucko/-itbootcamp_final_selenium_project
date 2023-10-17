@@ -26,7 +26,7 @@ public class LoginTests extends BasicTest {
 
     }
 
-    @Test (priority = 3, retryAnalyzer = retryAnalyzer.class)
+    @Test(priority = 3, retryAnalyzer = retryAnalyzer.class)
     public void displaysErrorsWhenUserDoesNotExist() {
         String email = "non-existing-user@gmail.com";
         String password = "password123";
@@ -42,8 +42,8 @@ public class LoginTests extends BasicTest {
         Assert.assertEquals(currentUrl, baseUrl + "/login");
     }
 
-    @Test (priority = 4, retryAnalyzer = retryAnalyzer.class)
-    public void displaysErrorsWhenPasswordIsWrong(){
+    @Test(priority = 4, retryAnalyzer = retryAnalyzer.class)
+    public void displaysErrorsWhenPasswordIsWrong() {
         String email = "admin@admin.com";
         String password = "password123";
 
@@ -52,13 +52,13 @@ public class LoginTests extends BasicTest {
         messagePopUpPage.waitForErrorPopupToBeVisible();
 
         String errorMessage = messagePopUpPage.getErrorMessage();
-        Assert.assertEquals(errorMessage, "Wrong password", "Message from popup should be contains \"Wrong password\"" );
+        Assert.assertEquals(errorMessage, "Wrong password", "Message from popup should be contains \"Wrong password\"");
 
         Assert.assertEquals(driver.getCurrentUrl(), baseUrl + "/login", "Urls should be similar.");
     }
 
-    @Test (priority = 5, retryAnalyzer = retryAnalyzer.class)
-    public void correctLogin(){
+    @Test(priority = 5, retryAnalyzer = retryAnalyzer.class)
+    public void correctLogin() {
         String email = "admin@admin.com";
         String password = "12345";
 
@@ -69,6 +69,13 @@ public class LoginTests extends BasicTest {
                 .until(ExpectedConditions.urlToBe(baseUrl + "/home"));
     }
 
+    @Test(priority = 6, retryAnalyzer = retryAnalyzer.class)
+    public void logout() {
+
+        navPage.waitUntilLogoutButtonIsVisible();
+        navPage.clickOnLogoutButton();
+
+    }
 }
 
 
