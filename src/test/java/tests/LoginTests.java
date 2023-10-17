@@ -57,6 +57,18 @@ public class LoginTests extends BasicTest {
         Assert.assertEquals(driver.getCurrentUrl(), baseUrl + "/login", "Urls should be similar.");
     }
 
+    @Test (priority = 5, retryAnalyzer = retryAnalyzer.class)
+    public void correctLogin(){
+        String email = "admin@admin.com";
+        String password = "12345";
+
+        loginPage.autoLogin(email, password);
+
+        wait
+                .withMessage("Url should be for home page.")
+                .until(ExpectedConditions.urlToBe(baseUrl + "/home"));
+    }
+
 }
 
 
