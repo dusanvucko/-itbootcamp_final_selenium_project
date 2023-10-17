@@ -18,4 +18,17 @@ public class AdminCitiesTest extends BasicTest {
 
         Assert.assertTrue(driver.getCurrentUrl().contains("/admin/cities"));
     }
+
+    @Test(priority = 2, retryAnalyzer = retryAnalyzer.class)
+    public void checksInputTypesForCreateEditNewCity() throws InterruptedException {
+        loginPage.autoLogin("admin@admin.com", "12345");
+
+        navPage.clickOnAdminButton();
+        citiesPage.clickOnCitiesButton();
+        citiesPage.clickOnNewItemButton();
+        citiesPage.waitForCreateEditCityDialogToAppear();
+
+        WebElement cityInputField = citiesPage.getCityInputField();
+        Assert.assertEquals(cityInputField.getAttribute("type"), "text");
+    }
 }
