@@ -1,4 +1,4 @@
-package tests;
+package retryAnalyzer;
 
 import org.testng.IRetryAnalyzer;
 import org.testng.ITestResult;
