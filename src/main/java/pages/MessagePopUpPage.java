@@ -13,14 +13,26 @@ public class MessagePopUpPage extends BasicPage {
     }
 
     public void waitForErrorPopupToBeVisible() {
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.v-snack__content")));
-        }
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.v-snack__content")));
+    }
 
     public String getErrorMessage() {
-            WebElement errorElement = driver.findElement(By.cssSelector("div > div.v-snack__content > ul > li"));
-            return errorElement.getText();
-        }
+        WebElement errorElement = driver.findElement(By.cssSelector("div > div.v-snack__content > ul > li"));
+        return errorElement.getText();
+
     }
+    public WebElement getCloseButton () {
+        return driver.findElement(By.cssSelector(".v-card__actions button"));
+    }
+    public void clickOnCloseButton () {
+        getCloseButton().click();
+    }
+    public String getVerifyPopupMessage(){
+        WebElement verifyPopupText = driver.findElement(By.cssSelector(".black--text.dlgVerifyAccount"));
+        return verifyPopupText.getText();
+    }
+}
+
 
 
 
