@@ -12,5 +12,15 @@ public class MessagePopUpPage extends BasicPage {
         super(driver, wait);
     }
 
+    public void waitForErrorPopupToBeVisible() {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.v-snack__content")));
+        }
+
+    public String getErrorMessage() {
+            WebElement errorElement = driver.findElement(By.cssSelector("div > div.v-snack__content > ul > li"));
+            return errorElement.getText();
+        }
     }
+
+
 

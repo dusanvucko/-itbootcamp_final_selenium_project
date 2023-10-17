@@ -22,6 +22,10 @@ public abstract class BasicTest {
     protected String baseUrl = "https://vue-demo.daniel-avellaneda.com";
     protected NavPage navPage;
 
+    protected LoginPage loginPage;
+
+    protected MessagePopUpPage messagePopUpPage;
+
     @BeforeClass
     public void setup() {
         WebDriverManager.chromedriver().setup();
@@ -31,6 +35,8 @@ public abstract class BasicTest {
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(20));
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         navPage = new NavPage(driver, wait);
+        loginPage = new LoginPage(driver,wait);
+        messagePopUpPage = new MessagePopUpPage(driver,wait);
 
     }
     @BeforeMethod
