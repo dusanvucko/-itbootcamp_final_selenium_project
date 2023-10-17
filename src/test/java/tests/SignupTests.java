@@ -16,6 +16,18 @@ public class SignupTests extends BasicTest {
         Assert.assertEquals(driver.getCurrentUrl(),baseUrl + "/signup");
     }
 
+    @Test(priority = 2, retryAnalyzer = retryAnalyzer.class)
+    public void checksInputTypes() throws InterruptedException {
+        navPage.clickOnSignUpButton();
+
+        wait
+                .until(ExpectedConditions.titleContains("Signup - My Awesome App"));
+
+        signupPage.checkEmailInputType();
+        signupPage.checkPasswordInputType();
+        signupPage.checkConfirmPassowordInputType();
+    }
+
     }
 
 
