@@ -55,7 +55,7 @@ public class SignupTests extends BasicTest {
 
         wait
                 .until(ExpectedConditions.titleContains("Signup - My Awesome App"));
-        signupPage.fillSignUpFormWithData("Veljko Andjelkovic", "veljko1@gmail.com", "12345", "12345");
+        signupPage.fillSignUpFormWithData("Dusan Vuckovic", "dusan@gmail.com", "12345", "12345");
         signupPage.clickOnSignUpButton();
 
         wait
