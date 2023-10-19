@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
+
 public class MessagePopUpPage extends BasicPage {
 
     public MessagePopUpPage(WebDriver driver, WebDriverWait wait) {
@@ -30,6 +32,17 @@ public class MessagePopUpPage extends BasicPage {
     public String getVerifyPopupMessage(){
         WebElement verifyPopupText = driver.findElement(By.cssSelector(".black--text.dlgVerifyAccount"));
         return verifyPopupText.getText();
+    }
+
+    public void waitForMessagePopupToBeVisible() throws InterruptedException {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"app\"]/div[1]/main/div/div[2]/div/div[3]/div/div/div/div")));
+    }
+
+
+    public void waitForSavedSuccefulyPopup() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"app\"]/div[1]/main/div/div[2]/div/div[3]/div/div/div/div")));
     }
 }
 

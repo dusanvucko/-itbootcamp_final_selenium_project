@@ -31,5 +31,19 @@ public class CitiesPage extends BasicPage {
         return driver.findElement(By.cssSelector("#name"));
     }
 
+    public void enterCityName(String cityName) {
+        WebElement cityInputField = driver.findElement(By.cssSelector("#name"));
+        cityInputField.sendKeys(cityName);
+    }
+
+    public void clickOnSaveButton() {
+        driver.findElement(By.cssSelector("div.v-card__actions > button.btnSave")).click();
+    }
+
+    public String getMessagePopupText() {
+        WebElement messagePopup = driver.findElement(By.cssSelector("div.v-snack__content"));
+        return messagePopup.getText();
+    }
+
 }
 
