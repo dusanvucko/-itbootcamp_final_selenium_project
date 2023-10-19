@@ -23,5 +23,10 @@ public class AuthRoutesTest extends BasicTest{
         driver.get(baseUrl + "/admin/cities");
         Assert.assertEquals(driver.getCurrentUrl(), baseUrl + "/login", "Current url should be " + baseUrl + "/login");
     }
+    @Test(priority = 4, retryAnalyzer = retryAnalyzer.class)
+    public void forbidVisitsToAdminUsersUrlIfNotAuthenticated() throws InterruptedException {
+        driver.get(baseUrl + "/admin/users");
+        Assert.assertEquals(driver.getCurrentUrl(), baseUrl + "/login", "Current url should be " + baseUrl + "/login");
+    }
 }
 
