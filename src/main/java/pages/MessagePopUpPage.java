@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.Collection;
 
 public class MessagePopUpPage extends BasicPage {
 
@@ -43,6 +44,11 @@ public class MessagePopUpPage extends BasicPage {
     public void waitForSavedSuccefulyPopup() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"app\"]/div[1]/main/div/div[2]/div/div[3]/div/div/div/div")));
+    }
+
+    public String getMessagePopupText() {
+        WebElement messagePopup = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/main/div/div[2]/div/div[3]/div/div/div/div/div[1]"));
+        return messagePopup.getText();
     }
 }
 

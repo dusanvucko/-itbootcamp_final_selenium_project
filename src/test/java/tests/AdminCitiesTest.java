@@ -77,5 +77,44 @@ public class AdminCitiesTest extends BasicTest {
 
         Assert.assertTrue(citiesPage.getMessagePopupText().contains("Saved successfully"));
     }
+
+    @Test(priority = 5, retryAnalyzer = retryAnalyzer.class)
+    public void searchCity() throws InterruptedException {
+        navPage.clickOnAdminButton();
+
+        citiesPage.clickOnCitiesButton();
+
+        citiesPage.searchCityName("Ledena Stena City");
+
+        citiesPage.waitForNumberOfRowsInTableToBe(1);
+
+        String actualCityName = citiesPage.getFirstRowName();
+        Assert.assertEquals("Ledena Stena City", actualCityName);
+    }
+
+    @Test(priority = 6, retryAnalyzer = retryAnalyzer.class)
+    public void deleteCity() throws InterruptedException {
+
+        navPage.clickOnAdminButton();
+
+        citiesPage.clickOnCitiesButton();
+
+        citiesPage.searchCityName("Barcelona");
+
+        citiesPage.waitForNumberOfRowsInTableToBe(1);
+
+        String actualCityName = citiesPage.getFirstRowName();
+        Assert.assertEquals("Barcelona", actualCityName);
+
+        citiesPage.clickOnDeleteButtonForFirstRow();
+
+        citiesPage.waitForDeleteDialogToBeVisible();
+
+        citiesPage.clickDeleteButtonInDialog();
+
+        messagePopUpPage.waitForMessagePopupToBeVisible();
+        Assert.assertTrue(messagePopUpPage.getMessagePopupText().contains("Deleted successfully"));
+    }
 }
+
 
