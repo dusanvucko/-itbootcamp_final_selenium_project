@@ -54,4 +54,28 @@ public class AdminCitiesTest extends BasicTest {
         WebElement cityInputField = citiesPage.getCityInputField();
         Assert.assertEquals(cityInputField.getAttribute("type"), "text");
     }
+
+    @Test(priority = 4, retryAnalyzer = retryAnalyzer.class)
+    public void editCity() throws InterruptedException {
+
+        navPage.clickOnAdminButton();
+
+        citiesPage.clickOnCitiesButton();
+
+
+        citiesPage.searchCityName("Ledena Stena City");
+
+        citiesPage.waitForNumberOfRowsInTableToBe(1);
+
+        citiesPage.clickOnEditButtonForFirstRow();
+
+        citiesPage.enterCityName("Nis");
+
+        citiesPage.clickOnSaveButton();
+
+        messagePopUpPage.waitForMessagePopupToBeVisible();
+
+        Assert.assertTrue(citiesPage.getMessagePopupText().contains("Saved successfully"));
+    }
 }
+
