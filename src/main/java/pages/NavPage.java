@@ -72,6 +72,11 @@ public class NavPage extends BasicPage{
     public String getHeaderText () {
         return getHeader().getText();
     }
+
+
+    public void clickOnEnglishLanguageInMenuList() {
+        getEnglishLanguage().click();
+    }
 }
 
 
