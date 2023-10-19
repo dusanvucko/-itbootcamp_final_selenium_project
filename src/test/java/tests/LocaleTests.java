@@ -23,4 +23,14 @@ public class LocaleTests extends BasicTest{
         navPage.clickOnEnglishLanguageInMenuList();
         Assert.assertEquals(navPage.getHeaderText(), "Landing", "Text in header should be 'Landing'.");
     }
+
+    @Test(priority = 3, retryAnalyzer = retryAnalyzer.class)
+    public void setLocaleToCN() {
+        navPage.clickOnLanguageMenuButton();
+        navPage.waitUntilLanguageListIsVisible();
+        navPage.clickOnChineseLanguageInMenuList();
+        Assert.assertEquals(navPage.getHeaderText(), "首页", "Text in header should be '首页'.");
+    }
+
+
 }
